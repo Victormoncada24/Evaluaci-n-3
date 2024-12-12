@@ -1,5 +1,6 @@
 import bcrypt
 from base_datos.conexion import conectar
+from consumo_api.indicadores import consultar_jsonplaceholder
 
 def registrar_usuario(nombre_usuario, contrasena):
     """Registra un usuario con una contraseña encriptada."""
@@ -52,7 +53,6 @@ def guardar_albums(albums):
                 VALUES (%s, %s, %s)
             ''', (album['id'], album['userId'], album['title']))
         conexion.commit()
-        print("Albums guardados correctamente.")
     except Exception as e:
         print(f"Error al guardar albums: {e}")
     finally:
@@ -69,9 +69,9 @@ def guardar_fotos(fotos):
                 INSERT INTO fotos (id, album_id, title, url, thumbnail_url)
                 VALUES (%s, %s, %s, %s, %s)
             ''', (foto['id'], foto['albumId'], foto['title'], foto['url'], foto['thumbnailUrl']))
-        conexion.commit()
-        print("Fotos guardadas correctamente.")
+        conexion.commit()        
     except Exception as e:
         print(f"Error al guardar fotos: {e}")
     finally:
+        
         conexion.close()

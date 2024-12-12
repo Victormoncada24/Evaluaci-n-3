@@ -31,10 +31,20 @@ def mostrar_menu():
                     albums = consultar_jsonplaceholder("albums")
                     if albums:
                         guardar_albums(albums[:5])
+                        albums = consultar_jsonplaceholder("albums")
+                        print("Albums guardados correctamente.")
+                        print("Primeros 5 albums:")
+                        for album in albums[:5]:
+                            print(album)                       
                 elif opcion == "2":
                     fotos = consultar_jsonplaceholder("photos")
                     if fotos:
                         guardar_fotos(fotos[:5])
+                        fotos = consultar_jsonplaceholder("photos")
+                        print("Fotos guardadas correctamente.")
+                        print("\nPrimeras 5 fotos:")
+                        for foto in fotos[:5]:
+                            print(foto)
                 elif opcion == "3":
                     print("¡Hasta luego!")
                     break
